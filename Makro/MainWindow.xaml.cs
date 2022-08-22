@@ -264,10 +264,10 @@ namespace Makro
                     actualMarks++;
 
             }
-            if (actualMarks == 8)
+            if (actualMarks == 4)
                 Statusleiste.Content = "Makro für Garr erfolgreich erstellt.";
             else
-                Statusleiste.Content = "Nur " + actualMarks + " von 8 Kicker!";
+                Statusleiste.Content = "Nur " + actualMarks + " von 4 Kicker!";
             Clipboard.SetText(MacroTextSulfuron);
         }
 
