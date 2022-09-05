@@ -265,7 +265,7 @@ namespace Makro
 
             }
             if (actualMarks == 4)
-                Statusleiste.Content = "Makro für Garr erfolgreich erstellt.";
+                Statusleiste.Content = "Makro für Sulfuron erfolgreich erstellt.";
             else
                 Statusleiste.Content = "Nur " + actualMarks + " von 4 Kicker!";
             Clipboard.SetText(MacroTextSulfuron);
