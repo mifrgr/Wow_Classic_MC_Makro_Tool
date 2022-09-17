@@ -9,11 +9,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Menu>
-            <MenuItem Header="Raid">
+            <MenuItem Header="Tools">
                 <MenuItem Header="Buffs" Click="_20er_Click"></MenuItem>
                 <MenuItem Header="MC" Click="MC_Click_1" ></MenuItem>
             </MenuItem>
@@ -22,6 +22,6 @@
             <TextBlock Text="Raid-Tool des schwarzen Drachenschwarms" FontFamily="Snap ITC" FontSize="30" Margin="100,50,0,0" ></TextBlock>
         </StackPanel>
        
-        <Image Grid.Row="1" Source="Screenshot_Raptor.jpg" ></Image>
+        <Image Grid.Row="1" Source="Screenshot_Raptor.jpg" Margin="0,0,0,20"></Image>
     </Grid>
 </Window>

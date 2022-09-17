@@ -121,8 +121,15 @@
             <Button Name="PriestBuff" Content="Priest Buffs" Width="150" Height="30" Click="PriestBuff_Click" Margin="10"></Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <CheckBox Content="20er" Name="_20er" Margin="10"></CheckBox>
-            <CheckBox Content="40er" Name="_40er" Margin="10"></CheckBox>
+            <CheckBox Content="20er" Name="_20er" Margin="10" Checked="_20er_Checked"></CheckBox>
+            <CheckBox Content="40er" Name="_40er" Margin="10" Checked="_40er_Checked"></CheckBox>
         </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Button Name="Speichern" Content="Speichern" Height="30" Width="150" Click="Speichern_Click" Margin="10"></Button>
+            <Button Name="Öffnen" Content="Öffnen" Height="30" Width="150" Click="Öffnen_Click"  Margin="10"></Button>
+        </StackPanel>
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="4">
+            <Label Name="StatusBar" Height="30" VerticalAlignment="Bottom"></Label>
+        </DockPanel>
     </Grid>
 </Window>
