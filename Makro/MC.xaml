@@ -19,33 +19,40 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel>
-            <Label Content="Tanks:" FontWeight="Black"></Label>
+            <Label Content="Tanks:   MainTank:" FontWeight="Black"></Label>
             <DockPanel>
-                <Label Content="1." Width="100"></Label>
-                <TextBox Name="Tank1" Width="100" ></TextBox>
+                <Label Content="1." Width="55"></Label>
+                <CheckBox Name="MT1" Margin="5,5,0,0" Checked="MT1_Checked"></CheckBox>
+                <TextBox Name="Tank1" Width="100" LostFocus="Tank1_LostFocus"></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="2." Width="100"></Label>
+                <Label Content="2." Width="55"></Label>
+                <CheckBox Name="MT2" Margin="5,5,0,0" Checked="MT2_Checked"></CheckBox>
                 <TextBox Name="Tank2" Width="100" ></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="3." Width="100"></Label>
+                <Label Content="3." Width="55"></Label>
+                <CheckBox Name="MT3" Margin="5,5,0,0" Checked="MT3_Checked"></CheckBox>
                 <TextBox Name="Tank3" Width="100" ></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="4." Width="100"></Label>
+                <Label Content="4." Width="55"></Label>
+                <CheckBox Name="MT4" Margin="5,5,0,0" Checked="MT4_Checked"></CheckBox>
                 <TextBox Name="Tank4" Width="100" ></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="5." Width="100"></Label>
+                <Label Content="5." Width="55"></Label>
+                <CheckBox Name="MT5" Margin="5,5,0,0" Checked="MT5_Checked"></CheckBox>
                 <TextBox Name="Tank5" Width="100" ></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="6." Width="100"></Label>
+                <Label Content="6." Width="55"></Label>
+                <CheckBox Name="MT6" Margin="5,5,0,0" Checked="MT6_Checked"></CheckBox>
                 <TextBox Name="Tank6" Width="100" ></TextBox>
             </DockPanel>
             <DockPanel>
-                <Label Content="7." Width="100"></Label>
+                <Label Content="7." Width="55"></Label>
+                <CheckBox Name="MT7" Margin="5,5,0,0" Checked="MT7_Checked"></CheckBox>
                 <TextBox Name="Tank7" Width="100" ></TextBox>
             </DockPanel>
 

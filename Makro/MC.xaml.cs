@@ -22,10 +22,16 @@ namespace Makro
     /// </summary>
     public partial class MC : Window
     {
+
+        RoleHandler roleHandler = new();
         string MacroTextGarr;
         string MacroTextSulfuron;
         string MacroTextMajordomus;
         string MacroTextHunde;
+
+        string MacroText;
+
+        string MT = "";
 
         List<TextBox> TanksList = new List<TextBox>();
         List<TextBox> MageList = new List<TextBox>();
@@ -46,8 +52,18 @@ namespace Makro
          * Kreuz = rt7
          * Totenkopf = rt8
          */
-        enum Symbol { rt8 = 1, rt7 = 2, rt4 = 3, rt6 = 4, rt5 = 5, rt1 = 6, rt3 = 7, rt2 = 8 }
+        enum Symbol { 
+            rt8 = 1,
+            rt7 = 2, 
+            rt4 = 3, 
+            rt6 = 4, 
+            rt5 = 5, 
+            rt1 = 6, 
+            rt3 = 7, 
+            rt2 = 8 
+        }
 
+      
         public MC()
         {
             InitializeComponent();
@@ -170,7 +186,7 @@ namespace Makro
         {
             Symbols = new List<bool>() { false, false, false, false, false, false, false, false };
 
-            MacroTextGarr = "/ra Garr = " + Tank1.Text + Environment.NewLine;
+            MacroTextGarr = "/ra Garr = " + MT + Environment.NewLine;
             for (int i = 0; i < 7; i++)
             {
                 if (WarlockList[i].Text != "")
@@ -224,11 +240,11 @@ namespace Makro
 
             Clipboard.SetText(MacroTextGarr);
         }
-        private async Task SulfuronHerold()
+        private void SulfuronHerold()
         {
             Symbols = new List<bool>() { false, false, false, false, false, false, false, false };
 
-            MacroTextSulfuron = "/ra Sulfuronherold = " + Tank1.Text + Environment.NewLine;
+            MacroTextSulfuron = "/ra Sulfuronherold = " + MT + Environment.NewLine;
             MacroTextSulfuron += "/ra {rt8} Tank = " + Tank2.Text + Environment.NewLine;
             MacroTextSulfuron += "/ra {rt7} Tank = " + Tank3.Text + Environment.NewLine;
             MacroTextSulfuron += "/ra {rt4} Tank = " + Tank4.Text + Environment.NewLine;
@@ -275,7 +291,7 @@ namespace Makro
             Symbols = new List<bool>() { false, false, false, false, false, false, false, false };
 
 
-            MacroTextMajordomus = "/ra Majordomus = " + Tank1.Text + Environment.NewLine;
+            MacroTextMajordomus = "/ra Majordomus = " + MT + Environment.NewLine;
             MacroTextMajordomus += "/ra {rt8} Tank = " + Tank2.Text + Environment.NewLine;
             MacroTextMajordomus += "/ra {rt7} Tank = " + Tank3.Text + Environment.NewLine;
             MacroTextMajordomus += "/ra {rt4} Tank = " + Tank4.Text + Environment.NewLine;
@@ -508,6 +524,109 @@ namespace Makro
 
             }
 
+        }
+
+        private void WriteMacro(string Boss,List<TextBox> ClassList)
+        {
+
+        }
+
+       
+
+
+        private void MT1_Checked(object sender, RoutedEventArgs e)
+        {
+
+            MT2.IsChecked = false;
+            MT3.IsChecked = false;
+            MT4.IsChecked = false;
+            MT5.IsChecked = false;
+            MT6.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank1.Text;
+
+        }
+
+        private void MT2_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT3.IsChecked = false;
+            MT4.IsChecked = false;
+            MT5.IsChecked = false;
+            MT6.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank2.Text;
+        }
+
+        private void MT3_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT2.IsChecked = false;
+            MT4.IsChecked = false;
+            MT5.IsChecked = false;
+            MT6.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank3.Text;
+        }
+
+        private void MT4_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT2.IsChecked = false;
+            MT3.IsChecked = false;
+            MT5.IsChecked = false;
+            MT6.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank4.Text;
+        }
+
+        private void MT5_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT2.IsChecked = false;
+            MT3.IsChecked = false;
+            MT4.IsChecked = false;
+            MT6.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank5.Text;
+
+        }
+
+        private void MT6_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT2.IsChecked = false;
+            MT3.IsChecked = false;
+            MT4.IsChecked = false;
+            MT5.IsChecked = false;
+            MT7.IsChecked = false;
+
+            MT = Tank6.Text;
+
+        }
+
+        private void MT7_Checked(object sender, RoutedEventArgs e)
+        {
+            MT1.IsChecked = false;
+            MT2.IsChecked = false;
+            MT3.IsChecked = false;
+            MT4.IsChecked = false;
+            MT5.IsChecked = false;
+            MT6.IsChecked = false;
+
+            MT = Tank7.Text;
+
+        }
+
+        private void Tank1_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (MT == "")
+                MT = Tank1.Text;
         }
     }
 }
