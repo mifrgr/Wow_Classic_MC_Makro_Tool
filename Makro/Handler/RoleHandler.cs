@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
-namespace Makro
+namespace Makro.Handler
 {
-    enum Role
+    public enum Role
     {
-        Mage = 1,
-        Warlock = 2,
-        Rouge = 3,
+        Tank = 1,
+        Heal = 2,
+        Mage = 3,
+        Rouge = 4,
+        Warlock = 5,
     }
 
     internal class RoleHandler
@@ -19,15 +22,11 @@ namespace Makro
         {
             switch (role)
             {
-                case Role.Mage:
-                    {
-                        switch(amount) 
-                        {
 
-                        }
-                    }
+
             }
 
+            return true;
         }
     }
 }

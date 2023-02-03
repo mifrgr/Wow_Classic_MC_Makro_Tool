@@ -1,0 +1,28 @@
+﻿<Window x:Class="Makro.Import_Json"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Makro"
+        mc:Ignorable="d"
+        Title="Import_Json" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.ColumnSpan="2">
+            <TextBox Name="InputBox" Margin="5"></TextBox>
+        </DockPanel>
+        <StackPanel Grid.Row="1">
+            <Button Content="Importieren" Name="Button_Importieren" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Importieren_Click"  Margin="5"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Content="Abbrechen" Name="Button_Abbrechen" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Abbrechen_Click"  Margin="5"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Makro
 {
-
-
-    internal class ListHandler
+    public class Player
     {
+        public string Name { get; set; }
+        public string Class { get; set; }
+        public string Spec { get; set; }
+
     }
+
+ 
 }
