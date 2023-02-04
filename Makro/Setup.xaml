@@ -31,7 +31,7 @@
 
         <StackPanel Grid.Column="2">
             <Label Content="Kicker:" FontWeight="Black"></Label>
-            <DataGrid Name="Rouge"></DataGrid>
+            <DataGrid Name="Kicker"></DataGrid>
             <Button Name="ResetRog" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetRog_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="3">
@@ -40,24 +40,23 @@
             <Button Name="ResetWL" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetWL_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <Button Content="Garr Einteilung" Name="Button_Gar_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Garr_Auswerten_Click" Margin="5"></Button>
-            <Button Content="Sulfuron Einteilung" Name="Button_Sulf_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Sulf_Auswerten_Click" Margin="5"></Button>
-            <Button Content="Majordomus Einteilung" Name="Button_Major_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Major_Auswerten_Click" Margin="5"></Button>
-            <Button Content="Hunde Einteilung" Name="Button_Hunde_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Hunde_Auswerten_Click" Margin="5"></Button>
+            <ComboBox>
+                <ComboBoxItem Name="MC" Content="MC" Selected="MC_Selected" />
+                <ComboBoxItem Name ="BWL" Content="BWL" Selected="BWL_Selected"  />
+            </ComboBox>
+            <ComboBox Margin="0,50,0,50" Name="MC_Einteilungen" Visibility="Hidden">
+                <ComboBoxItem Name="Hunde" Content="Hunde" Selected="Hunde_Selected" />
+                <ComboBoxItem Name="Garr" Content="Garr" Selected="Garr_Selected" />
+                <ComboBoxItem Name="Sulfuron" Content="Sulfuron" Selected="Sulfuron_Selected" />
+                <ComboBoxItem Name="Majordomus" Content="Majordomus" Selected="Majordomus_Selected"/>
+            </ComboBox>
+            <Button Content="Einteilung erstellen" Name="Einteilung_Auswerten" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Einteilung_Auswerten_Click" Margin="5"></Button>
         </StackPanel>
         <DockPanel Grid.Row="2" Grid.ColumnSpan="4">
             <Label Height="30" Name="Statusleiste" Grid.ColumnSpan="4" VerticalAlignment="Bottom" ></Label>
         </DockPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Button Content="Speichern" Name="Button_Speichern" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Speichern_Click" Margin="5"></Button>
-            <Button Content="Öffnen" Name="Button_Öffnen" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Öffnen_Click"  Margin="5"></Button>
-        </StackPanel>
-        <StackPanel Grid.Column="2" Grid.Row="1">
             <Button Content="Importieren" Name="Button_Importieren" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Importieren_Click" Margin="5"></Button>
-        </StackPanel>
-        <StackPanel Grid.Column="3" Grid.Row="1">
-            <DataGrid Name="view" Height="100">
-            </DataGrid>
         </StackPanel>
     </Grid>
 </Window>

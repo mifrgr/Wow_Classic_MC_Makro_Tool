@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Makro.Classes
 {
-    internal class Rouge
+    internal class Kicker
     {
         public string Name { get; set; }
 
-        public Rouge(string name)
+        public Kicker(string name)
         {
             Name = name;
         }

@@ -26,10 +26,20 @@ namespace Makro.Json
 
         public List<Player> Json_read()
         {
-            JObject o = JObject.Parse(json_string);
-            JArray a = (JArray)o["signups"];
+            List<Player> players;
+            try
+            {
+                JObject o = JObject.Parse(json_string);
+                JArray a = (JArray)o["signups"];
 
-            List<Player> players = a.ToObject<List<Player>>();
+                players = a.ToObject<List<Player>>();
+            }
+
+            catch(Exception e)
+            {
+                players = new List<Player>();
+            }
+            
             return players;
         }
     }

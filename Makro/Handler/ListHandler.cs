@@ -13,11 +13,12 @@ namespace Makro.Handler
 
         public List<Tank> TanksList { get; set; } = new List<Tank>();
         public List<Mage> MageList { get; set; } = new List<Mage>();
-        public List<Rouge> RougeList { get; set; } = new List<Rouge>();
+        public List<Kicker> KickerList { get; set; } = new List<Kicker>();
         public List<Warlock> WarlockList { get; set; } = new List<Warlock>();
 
         public void FillList(List<Player> players)
         {
+            ClearLists();
             foreach(var item in players) 
             {
                 switch(item.Class)
@@ -29,7 +30,10 @@ namespace Makro.Handler
                         }
                     case "Mage":
                         {
-                            MageList.Add(new Mage(item.Name));
+                            if(MageList.Count < 6)
+                            {
+                                MageList.Add(new Mage(item.Name));
+                            }
                             break;
                         }
                     case "Warlock":
@@ -39,12 +43,33 @@ namespace Makro.Handler
                         }
                     case "Rogue":
                         {
-                            RougeList.Add(new Rouge(item.Name));
+                            if(KickerList.Count < 6)
+                            {
+                                KickerList.Add(new Kicker(item.Name));
+                            }                          
+                            break;
+                        }
+
+                    case "Warrior":
+                        {
+                            if(KickerList.Count < 6)
+                            {
+                                KickerList.Add(new Kicker(item.Name));
+                            }
+                            
                             break;
                         }
                 }
             }
             
+        }
+
+        void ClearLists()
+        {
+            TanksList.Clear();
+            MageList.Clear();
+            WarlockList.Clear();
+            KickerList.Clear();
         }
 
     }
