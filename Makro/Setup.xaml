@@ -28,7 +28,6 @@
             <DataGrid Name="Mage" ></DataGrid>
             <Button Name="ResetMage" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetMage_Click" Margin="5"></Button>
         </StackPanel>
-
         <StackPanel Grid.Column="2">
             <Label Content="Kicker:" FontWeight="Black"></Label>
             <DataGrid Name="Kicker"></DataGrid>
@@ -50,13 +49,63 @@
                 <ComboBoxItem Name="Sulfuron" Content="Sulfuron" Selected="Sulfuron_Selected" />
                 <ComboBoxItem Name="Majordomus" Content="Majordomus" Selected="Majordomus_Selected"/>
             </ComboBox>
-            <Button Content="Einteilung erstellen" Name="Einteilung_Auswerten" Width="150" Height="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="Einteilung_Auswerten_Click" Margin="5"></Button>
+            <Button Content="Einteilung erstellen" Name="Einteilung_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Einteilung_Auswerten_Click" Margin="5"></Button>
         </StackPanel>
         <DockPanel Grid.Row="2" Grid.ColumnSpan="4">
             <Label Height="30" Name="Statusleiste" Grid.ColumnSpan="4" VerticalAlignment="Bottom" ></Label>
         </DockPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button Content="Importieren" Name="Button_Importieren" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Importieren_Click" Margin="5"></Button>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <DockPanel >
+                <Label Content="Role:" Width="50"></Label>
+                <Label Content="Anzahl:" Width="50" HorizontalAlignment="Right"></Label>
+            </DockPanel>
+            <DockPanel>
+                <ComboBox Name="Role1" Width="150">
+                </ComboBox>
+                <TextBox Name="Count_Role1" Width="40" HorizontalAlignment="Right" TextChanged="Count_Role1_TextChanged"></TextBox>
+            </DockPanel>
+            <DockPanel >
+                <Label Content="Role:" Width="50"></Label>
+                <Label Content="Anzahl:" Width="50" HorizontalAlignment="Right"></Label>
+            </DockPanel>
+            <DockPanel>
+                <ComboBox Name="Role2" Width="150">
+                </ComboBox>
+                <TextBox Name="Count_Role2" Width="40" HorizontalAlignment="Right" TextChanged="Count_Role2_TextChanged"></TextBox>
+            </DockPanel>
+            <DockPanel >
+                <Label Content="Role:" Width="50"></Label>
+                <Label Content="Anzahl:" Width="50" HorizontalAlignment="Right"></Label>
+            </DockPanel>
+            <DockPanel>
+                <ComboBox Name="Role3" Width="150">
+                </ComboBox>
+                <TextBox Name="Count_Role3" Width="40" HorizontalAlignment="Right" TextChanged="Count_Role3_TextChanged"></TextBox>
+            </DockPanel>
+            <DockPanel >
+                <Label Content="Role:" Width="50"></Label>
+                <Label Content="Anzahl:" Width="50" HorizontalAlignment="Right"></Label>
+            </DockPanel>
+            <DockPanel>
+                <ComboBox Name="Role4" Width="150">
+                </ComboBox>
+                <TextBox Name="Count_Role4" Width="40" HorizontalAlignment="Right" TextChanged="Count_Role4_TextChanged"></TextBox>
+            </DockPanel>
+            <DockPanel >
+                <Label Content="Role:" Width="50"></Label>
+                <Label Content="Anzahl:" Width="50" HorizontalAlignment="Right"></Label>
+            </DockPanel>
+            <DockPanel>
+                <ComboBox Name="Role5" Width="150">
+                </ComboBox>
+                <TextBox Name="Count_Role5" Width="40" HorizontalAlignment="Right" TextChanged="Count_Role5_TextChanged"></TextBox>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="2">
+            <Button Name="SetCustomMakro" Content="Erstellen" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="SetCustomMakro_Click" Margin="5"></Button>
         </StackPanel>
     </Grid>
 </Window>

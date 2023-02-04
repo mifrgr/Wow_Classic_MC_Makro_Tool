@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.ServiceModel.Channels;
 using Newtonsoft.Json.Linq;
+using Makro;
 
-namespace Makro.Json
+namespace Raid_Tool.Json
 {
 
     internal class Json_Handler
@@ -19,7 +20,7 @@ namespace Makro.Json
             Import_Json import_json = new Import_Json();
             import_json.ShowDialog();
             json_string = import_json.InputBox.Text;
-            if(json_string != "")
+            if (json_string != "")
                 return true;
             else return false;
         }
@@ -35,11 +36,11 @@ namespace Makro.Json
                 players = a.ToObject<List<Player>>();
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 players = new List<Player>();
             }
-            
+
             return players;
         }
     }

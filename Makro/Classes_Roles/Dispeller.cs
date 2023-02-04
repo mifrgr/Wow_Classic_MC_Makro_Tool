@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.Classes
+namespace Raid_Tool.Classes_Roles
 {
-    internal class Mage
+    internal class Dispeller
     {
         public string Name { get; set; }
 
-        public Mage(string name)
-        { 
-            Name = name; 
+        public Dispeller(string name)
+        {
+            Name = name;
         }
     }
 }

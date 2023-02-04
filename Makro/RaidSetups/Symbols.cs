@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.RaidSetups
+namespace Raid_Tool.RaidSetups
 {
     enum Symbol
     {
-        rt1 = 0, //Stern
-        rt2 = 1, //Kreis
-        rt3 = 2, //Kristall
-        rt4 = 3, //Dreieck
+        rt1 = 5, //Stern
+        rt2 = 6, //Kreis
+        rt3 = 7, //Kristall
+        rt4 = 2, //Dreieck
         rt5 = 4, //Mond
-        rt6 = 5, //Viereck
-        rt7 = 6, //Kreuz
-        rt8 = 7, //Totenkopf
+        rt6 = 3, //Viereck
+        rt7 = 1, //Kreuz
+        rt8 = 0, //Totenkopf
 
     }
     internal class Symbols

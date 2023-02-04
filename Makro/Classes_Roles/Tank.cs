@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.Classes
+namespace Raid_Tool.Classes_Roles
 {
     internal class Tank
     {

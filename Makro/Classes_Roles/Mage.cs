@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.Classes
+namespace Raid_Tool.Classes_Roles
 {
-    internal class Warlock
+    internal class Mage
     {
         public string Name { get; set; }
 
-
-        public Warlock(string name) 
+        public Mage(string name)
         {
-            Name= name;
+            Name = name;
         }
     }
 }

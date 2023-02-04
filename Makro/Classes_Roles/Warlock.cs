@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.Classes
+namespace Raid_Tool.Classes_Roles
 {
-    internal class Kicker
+    internal class Warlock
     {
         public string Name { get; set; }
 
-        public Kicker(string name)
+
+        public Warlock(string name)
         {
             Name = name;
         }

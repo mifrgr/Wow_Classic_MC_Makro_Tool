@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Raid_Tool
+namespace Raid_Tool.Classes_Roles
 {
-    public class Player
+    internal class Kicker
     {
         public string Name { get; set; }
-        public string Class { get; set; }
-        public string Spec { get; set; }
 
+        public Kicker(string name)
+        {
+            Name = name;
+        }
     }
-
-
 }

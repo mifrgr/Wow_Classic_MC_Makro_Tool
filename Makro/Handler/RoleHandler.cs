@@ -1,12 +1,12 @@
-﻿using Makro.Classes;
-using Makro.RaidSetups;
+﻿using Raid_Tool.RaidSetups;
+using Raid_Tool.Classes_Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Makro.Handler
+namespace Raid_Tool.Handler
 {
     public enum Role
     {
@@ -17,32 +17,32 @@ namespace Makro.Handler
         Warlock = 5,
     }
 
+
     internal class RoleHandler
     {
-
-        public bool HasRaidEnough(List<Tank> tanks, byte amount)
+        public int HasRaidEnough(List<Tank> tanks, byte amount)
         {
             if (tanks.Count >= amount)
-                return true;
-            else return false;
+                return amount;
+            else return tanks.Count;
         }
-        public bool HasRaidEnough(List<Mage> Mage, byte amount)
+        public int HasRaidEnough(List<Mage> Mage, byte amount)
         {
             if (Mage.Count >= amount)
-                return true;
-            else return false;
+                return amount;
+            else return Mage.Count;
         }
-        public bool HasRaidEnough(List<Kicker> Kicker, byte amount)
+        public int HasRaidEnough(List<Kicker> Kicker, byte amount)
         {
             if (Kicker.Count >= amount)
-                return true;
-            else return false;
+                return amount;
+            else return Kicker.Count;
         }
-        public bool HasRaidEnough(List<Warlock> warlocks, byte amount)
+        public int HasRaidEnough(List<Warlock> warlocks, byte amount)
         {
             if (warlocks.Count >= amount)
-                return true;
-            else return false;
+                return amount;
+            else return warlocks.Count;
         }
 
 

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Makro.Classes;
+using Raid_Tool.Makro;
+using Raid_Tool.Classes_Roles;
 
-namespace Makro.Handler
+namespace Raid_Tool.Handler
 {
 
     internal class ListHandler
@@ -15,13 +16,18 @@ namespace Makro.Handler
         public List<Mage> MageList { get; set; } = new List<Mage>();
         public List<Kicker> KickerList { get; set; } = new List<Kicker>();
         public List<Warlock> WarlockList { get; set; } = new List<Warlock>();
+        public List<Dispeller> DispellerList { get; set; } = new List<Dispeller>();
+
+        public Dictionary<Role, byte> CustomMakro { get; set; } = new Dictionary<Role, byte>();
+
+        public List<Entry> EntryList { get; set; } = new List<Entry>();
 
         public void FillList(List<Player> players)
         {
             ClearLists();
-            foreach(var item in players) 
+            foreach (var item in players)
             {
-                switch(item.Class)
+                switch (item.Class)
                 {
                     case "Tank":
                         {
@@ -30,10 +36,12 @@ namespace Makro.Handler
                         }
                     case "Mage":
                         {
-                            if(MageList.Count < 6)
+                            if (MageList.Count < 6)
                             {
                                 MageList.Add(new Mage(item.Name));
                             }
+                            else
+                                DispellerList.Add(new Dispeller(item.Name));
                             break;
                         }
                     case "Warlock":
@@ -43,25 +51,32 @@ namespace Makro.Handler
                         }
                     case "Rogue":
                         {
-                            if(KickerList.Count < 6)
+                            if (KickerList.Count < 6)
                             {
                                 KickerList.Add(new Kicker(item.Name));
-                            }                          
+                            }
                             break;
                         }
 
                     case "Warrior":
                         {
-                            if(KickerList.Count < 6)
+                            if (KickerList.Count < 6)
                             {
                                 KickerList.Add(new Kicker(item.Name));
                             }
-                            
+                            break;
+                        }
+                    case "Paladin":
+                        {
+                            if (item.Spec == "Holy1")
+                            {
+                                DispellerList.Add(new Dispeller(item.Name));
+                            }
                             break;
                         }
                 }
             }
-            
+
         }
 
         void ClearLists()
@@ -70,6 +85,7 @@ namespace Makro.Handler
             MageList.Clear();
             WarlockList.Clear();
             KickerList.Clear();
+            DispellerList.Clear();
         }
 
     }
