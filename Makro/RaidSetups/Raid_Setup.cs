@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Raid_Tool.Classes_Roles;
 
 namespace Raid_Tool.RaidSetups
 {
@@ -13,41 +14,64 @@ namespace Raid_Tool.RaidSetups
     {
         public static string Einteilung(ListHandler listhandler, Role role, byte amount, bool MTneed = false)
         {
-            FillMakroList(listhandler, role, amount);
+            FillMakroList(listhandler, role, amount,0, MTneed);
             return Makro_Handler.MakeMakro();
 
         }
         public static string Einteilung(ListHandler listhandler, Role role, byte amount, Role role1, byte amount1, bool MTneed = false)
         {
-            FillMakroList(listhandler, role, amount);
+            FillMakroList(listhandler, role, amount,0, MTneed);
             FillMakroList(listhandler, role1, amount1, amount);
             return Makro_Handler.MakeMakro();
         }
         public static string Einteilung(ListHandler listhandler, Role role, byte amount, Role role1, byte amount1, Role role2, byte amount2, bool MTneed = false)
         {
-            FillMakroList(listhandler, role, amount);
+            FillMakroList(listhandler, role, amount, 0, MTneed);
             FillMakroList(listhandler, role1, amount1, amount);
             FillMakroList(listhandler, role2, amount2, (byte)(amount + amount1));
             return Makro_Handler.MakeMakro();
         }
         public static string Einteilung(ListHandler listhandler, Role role, byte amount, Role role1, byte amount1, Role role2, byte amount2, Role role3, byte amount3, bool MTneed = false)
         {
-            FillMakroList(listhandler, role, amount);
+            FillMakroList(listhandler, role, amount, 0, MTneed);
             FillMakroList(listhandler, role1, amount1, amount);
             FillMakroList(listhandler, role2, amount2, (byte)(amount + amount1));
             FillMakroList(listhandler, role3, amount3, (byte)(amount + amount1 + amount2));
             return Makro_Handler.MakeMakro();
         }
 
-        static void FillMakroList(ListHandler listhandler, Role role, byte amount, byte startindex = 0)
+        static void FillMakroList(ListHandler listhandler, Role role, byte amount, byte startindex, bool MTneed = false)
         {
+            if(MTneed)
+            {
+                try
+                {
+                    foreach (Tank tank in listhandler.TanksList)
+                    {
+
+                        if (tank.IsMT)
+                        {
+                            Makro_Handler.EntryList.Add(new Entry(Role.Tank, Symbol.Boss, tank.Name));
+                        }
+
+                    }
+                }
+
+                catch(Exception e) { }
+               
+            }
             for (int i = 0; i < amount; i++)
             {
                 switch (role)
                 {
                     case Role.Tank:
                         {
-                            Makro_Handler.EntryList.Add(new Entry(Role.Tank, (Symbol)i + startindex, listhandler.TanksList[i].Name));
+                            if(listhandler.TanksList[i].IsMT || Makro_Handler.EntryList.Exists(entry => entry.Name == listhandler.TanksList[i].Name))
+                            {
+                                Makro_Handler.EntryList.Add(new Entry(Role.Tank, (Symbol)i + startindex, listhandler.TanksList[i+1].Name));
+                            }
+                            else
+                                Makro_Handler.EntryList.Add(new Entry(Role.Tank, (Symbol)i + startindex, listhandler.TanksList[i].Name));
                             break;
                         }
                     case Role.Mage:

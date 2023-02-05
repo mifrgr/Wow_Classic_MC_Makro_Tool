@@ -19,7 +19,6 @@ namespace Raid_Tool.Makro
             {
                 makro+= "/ra {" + entry.Symbol.ToString() +"} " + entry.Role.ToString() + " : " +entry.Name + Environment.NewLine;
             }
-            EntryList.Clear();
             return makro;
         }
     }

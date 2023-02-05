@@ -16,6 +16,7 @@ namespace Raid_Tool.RaidSetups
         rt6 = 3, //Viereck
         rt7 = 1, //Kreuz
         rt8 = 0, //Totenkopf
+        Boss = 10,
 
     }
     internal class Symbols

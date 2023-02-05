@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Makro"
         mc:Ignorable="d"
-        Title="Makro Creation Tool" Height="650" Width="900">
+        Title="Makro Creation Tool" Height="900" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -20,22 +20,22 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <Label Content="Tanks:   MainTank:" FontWeight="Black"></Label>
-            <DataGrid Name="Tanks" ></DataGrid>
+            <DataGrid Name="Tanks" IsReadOnly="False" CanUserSortColumns="True"></DataGrid>
             <Button Name="ResetTanks" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetTanks_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Content="Mage:" FontWeight="Black"></Label>
-            <DataGrid Name="Mage" ></DataGrid>
+            <DataGrid Name="Mage" IsReadOnly="False"></DataGrid>
             <Button Name="ResetMage" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetMage_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="2">
             <Label Content="Kicker:" FontWeight="Black"></Label>
-            <DataGrid Name="Kicker"></DataGrid>
+            <DataGrid Name="Kicker" IsReadOnly="False"></DataGrid>
             <Button Name="ResetRog" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetRog_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="3">
             <Label Content="Warlock:" FontWeight="Black"></Label>
-            <DataGrid Name="Warlock"></DataGrid>
+            <DataGrid Name="Warlock" IsReadOnly="False" ></DataGrid>
             <Button Name="ResetWL" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetWL_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Row="1">
@@ -44,10 +44,6 @@
                 <ComboBoxItem Name ="BWL" Content="BWL" Selected="BWL_Selected"  />
             </ComboBox>
             <ComboBox Margin="0,50,0,50" Name="MC_Einteilungen" Visibility="Hidden">
-                <ComboBoxItem Name="Hunde" Content="Hunde" Selected="Hunde_Selected" />
-                <ComboBoxItem Name="Garr" Content="Garr" Selected="Garr_Selected" />
-                <ComboBoxItem Name="Sulfuron" Content="Sulfuron" Selected="Sulfuron_Selected" />
-                <ComboBoxItem Name="Majordomus" Content="Majordomus" Selected="Majordomus_Selected"/>
             </ComboBox>
             <Button Content="Einteilung erstellen" Name="Einteilung_Auswerten" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Einteilung_Auswerten_Click" Margin="5"></Button>
         </StackPanel>
@@ -56,6 +52,7 @@
         </DockPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button Content="Importieren" Name="Button_Importieren" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Importieren_Click" Margin="5"></Button>
+            <Button Content="Lisen resetten" Name="Button_Reset_List" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Reset_List_Click"  Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1">
             <DockPanel >

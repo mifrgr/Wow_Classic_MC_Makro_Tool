@@ -20,8 +20,6 @@ namespace Raid_Tool.Handler
 
         public Dictionary<Role, byte> CustomMakro { get; set; } = new Dictionary<Role, byte>();
 
-        public List<Entry> EntryList { get; set; } = new List<Entry>();
-
         public void FillList(List<Player> players)
         {
             ClearLists();
@@ -31,7 +29,7 @@ namespace Raid_Tool.Handler
                 {
                     case "Tank":
                         {
-                            TanksList.Add(new Tank(item.Name));
+                            TanksList.Add(new Tank(item.Name,Role.Tank));
                             break;
                         }
                     case "Mage":
@@ -64,6 +62,8 @@ namespace Raid_Tool.Handler
                             {
                                 KickerList.Add(new Kicker(item.Name));
                             }
+                            else
+                                TanksList.Add(new Tank(item.Name,Role.Warrior));
                             break;
                         }
                     case "Paladin":
@@ -76,7 +76,7 @@ namespace Raid_Tool.Handler
                         }
                 }
             }
-
+            TanksList = TanksList.OrderBy(Tank => Tank.Role).ToList();
         }
 
         void ClearLists()

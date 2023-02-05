@@ -18,6 +18,8 @@ using Raid_Tool.Json;
 using Raid_Tool;
 using Raid_Tool.RaidSetups;
 using Raid_Tool.Handler;
+using Raid_Tool.Classes_Roles;
+using Raid_Tool.Makro;
 
 namespace Makro
 {
@@ -29,7 +31,6 @@ namespace Makro
         public List<Player> RaidSignup = new List<Player>();
 
         ListHandler listHandler = new();
-        RoleHandler roleHandler = new();
 
         string makroText = "";
 
@@ -42,13 +43,14 @@ namespace Makro
             Role3.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>().ToList();
             Role4.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>().ToList();
             Role5.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>().ToList();
+
+            MC_Einteilungen.ItemsSource = Enum.GetValues(typeof(MC_PreDefinedMakros)).Cast<MC_PreDefinedMakros>().ToList();
         }
 
         private void FillLists()
         {
             listHandler.FillList(RaidSignup);
             Tanks.ItemsSource = listHandler.TanksList;
-            Tanks.IsReadOnly = false;
             Mage.ItemsSource = listHandler.MageList;
             Kicker.ItemsSource = listHandler.KickerList;
             Warlock.ItemsSource = listHandler.WarlockList;
@@ -87,9 +89,7 @@ namespace Makro
 
         private void Einteilung_Auswerten_Click(object sender, RoutedEventArgs e)
         {
-            //var selected = MC_Einteilungen.SelectedItem;
-            //MC_Einteilungen.SelectedItem = null;
-            //MC_Einteilungen.SelectedItem = selected;
+            SetPreDefinedMakro();
             try
             {
                 Clipboard.Clear();
@@ -119,56 +119,12 @@ namespace Makro
 
         }
 
-        private void Hunde_Selected(object sender, RoutedEventArgs e)
-        {
-            int retval = roleHandler.HasRaidEnough(listHandler.TanksList, 5);
-
-            if (retval == 5)
-            {
-                makroText = "";
-                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 5);
-            }
-            else Statusleiste.Content = retval + " von 5 Tanks eingeteilt";
-        }
-
-        private void Sulfuron_Selected(object sender, RoutedEventArgs e)
-        {
-            int retvalTank = roleHandler.HasRaidEnough(listHandler.TanksList, 4);
-            int retvalKick = roleHandler.HasRaidEnough(listHandler.KickerList, 4);
-
-            if (retvalTank == 4 && retvalKick == 4)
-            {
-                makroText = "";
-                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Kicker, 4);
-            }
-
-            else Statusleiste.Content = retvalTank + "/4 Tanks eingeteilt, " + retvalKick + "/4 Kicker."; 
-        }
-
-        private void Majordomus_Selected(object sender, RoutedEventArgs e)
-        {
-            int retvalTank = roleHandler.HasRaidEnough(listHandler.TanksList, 4);
-            int retvalMage = roleHandler.HasRaidEnough(listHandler.MageList, 4);
-
-            if (retvalTank == 4 && retvalMage == 4 )
-            {
-                makroText = "";
-                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Mage, 4);
-            }
-        }
-
-        private void Garr_Selected(object sender, RoutedEventArgs e)
-        {
-            if((listHandler.WarlockList.Count + listHandler.TanksList.Count) >= 8)
-            {
-                makroText = "";
-                makroText = Raid_Setup.Einteilung(listHandler, Role.Warlock, (byte)listHandler.WarlockList.Count, Role.Tank, (byte)(8 - listHandler.WarlockList.Count));
-            }
-        }
-
         private void SetCustomMakro_Click(object sender, RoutedEventArgs e)
         {
-            switch(listHandler.CustomMakro.Count)
+            Makro_Handler.EntryList.Clear();
+            FillLists();
+
+            switch (listHandler.CustomMakro.Count)
             {
                 case 1:
                     {
@@ -194,7 +150,58 @@ namespace Makro
             Clipboard.SetText(makroText);
         }
 
+        private void SetPreDefinedMakro()
+        {
+            switch((MC_PreDefinedMakros)MC_Einteilungen.SelectedItem)
+            {
+                case MC_PreDefinedMakros.Hunde:
+                    {
+                        Makro_Handler.EntryList.Clear();
+                        if (listHandler.TanksList.Count >= 5)
+                        {
+                            makroText = "";
+                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 5);
+                        }
+                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + " von 5 Tanks eingeteilt";
+                        break;
+                    }
+                case MC_PreDefinedMakros.Sulfuron:
+                    {
+                        Makro_Handler.EntryList.Clear();
+                        if (listHandler.TanksList.Count >= 5 && listHandler.KickerList.Count >= 4)
+                        {
+                            makroText = "";
+                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Kicker, 4, true);
+                        }
+                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Kicker).Count() + "/4 Kicker.";
+                        break;
+                    }
+                case MC_PreDefinedMakros.Majordomus:
+                    {
+                        Makro_Handler.EntryList.Clear();
+                        if (listHandler.TanksList.Count >= 5 && listHandler.MageList.Count >= 4)
+                        {
+                            makroText = "";
+                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Mage, 4, true);
+                        }
+                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Mage).Count() + "/4 Mages.";
+                        break;
+                    }
+                case MC_PreDefinedMakros.Garr:
+                    {
+                        Makro_Handler.EntryList.Clear();
+                        if ((listHandler.WarlockList.Count + listHandler.TanksList.Count) >= 8)
+                        {
+                            makroText = "";
+                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, (byte)(8 - listHandler.WarlockList.Count), Role.Warlock, (byte)listHandler.WarlockList.Count,true);
+                        }
+                        Statusleiste.Content = (Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Warlock).Count()) + "/8 Tanks/Hexer eingeteilt,";
+                        break;
+                    }
 
+
+            }
+        }
         private void Count_Role1_TextChanged(object sender, TextChangedEventArgs e)
         {
             if(Role1.SelectedItem == null && Count_Role1.Text != "")
@@ -282,6 +289,11 @@ namespace Makro
                 }
                 listHandler.CustomMakro.Add((Role)Role5.SelectedItem, byte.Parse(Count_Role5.Text));
             }
+        }
+
+        private void Button_Reset_List_Click(object sender, RoutedEventArgs e)
+        {
+            FillLists();
         }
     }
 }

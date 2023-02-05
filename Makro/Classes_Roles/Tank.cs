@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Raid_Tool.Handler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,13 @@ namespace Raid_Tool.Classes_Roles
     {
         public string Name { get; set; }
         public bool IsMT { get; set; }
+        public Role Role { get; set; }
 
-        public Tank(string name)
+        public Tank(string name,Role role)
         {
             Name = name;
+            Role = role;
+
         }
     }
 }
