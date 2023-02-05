@@ -10,33 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace Makro
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für Import_Json.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Import_Json : Window
     {
-        public MainWindow()
+        public string Json { get; set; }
+
+        public Import_Json()
         {
             InitializeComponent();
         }
 
-        private void _20er_Click(object sender, RoutedEventArgs e)
+        private void Button_Importieren_Click(object sender, RoutedEventArgs e)
         {
-            Buffs raid = new Buffs();
-            raid.Show();
-
+            Json = InputBox.Text;
+            Close();
         }
 
-        private void MC_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Abbrechen_Click(object sender, RoutedEventArgs e)
         {
-            Setup raid = new Setup();
-            raid.Show();
+            if (MessageBox.Show("Bist du sicher?", "Warnung") == MessageBoxResult.OK)
+                Close();
         }
     }
 }

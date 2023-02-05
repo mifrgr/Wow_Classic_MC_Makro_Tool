@@ -15,7 +15,7 @@
         <Menu>
             <MenuItem Header="Tools">
                 <MenuItem Header="Buffs" Click="_20er_Click"></MenuItem>
-                <MenuItem Header="MC" Click="MC_Click_1" ></MenuItem>
+                <MenuItem Header="Setup" Click="MC_Click_1" ></MenuItem>
             </MenuItem>
         </Menu>
         <StackPanel>
