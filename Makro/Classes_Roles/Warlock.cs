@@ -10,6 +10,7 @@ namespace Raid_Tool.Classes_Roles
     {
         public string Name { get; set; }
 
+        public Warlock() { }
 
         public Warlock(string name)
         {

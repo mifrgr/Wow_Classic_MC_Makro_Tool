@@ -44,21 +44,20 @@ namespace Raid_Tool.RaidSetups
         {
             if(MTneed)
             {
-                try
+                foreach (Tank tank in listhandler.TanksList)
                 {
-                    foreach (Tank tank in listhandler.TanksList)
+
+                    if (tank.IsMT)
                     {
-
-                        if (tank.IsMT)
-                        {
-                            Makro_Handler.EntryList.Add(new Entry(Role.Tank, Symbol.Boss, tank.Name));
-                        }
-
+                        Makro_Handler.EntryList.Add(new Entry(Role.Tank, Symbol.Boss, tank.Name));
                     }
+
+                }
+                if(Makro_Handler.EntryList.Count == 0)
+                {
+                    throw new Exception("Bitte wählen Sie einen Maintank aus!");
                 }
 
-                catch(Exception e) { }
-               
             }
             for (int i = 0; i < amount; i++)
             {

@@ -10,6 +10,8 @@ namespace Raid_Tool.Classes_Roles
     {
         public string Name { get; set; }
 
+        public Kicker() { }
+
         public Kicker(string name)
         {
             Name = name;

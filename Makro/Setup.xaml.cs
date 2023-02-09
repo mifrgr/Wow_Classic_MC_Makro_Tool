@@ -33,7 +33,6 @@ namespace Makro
         ListHandler listHandler = new();
 
         string makroText = "";
-
       
         public Setup()
         {
@@ -152,54 +151,61 @@ namespace Makro
 
         private void SetPreDefinedMakro()
         {
-            switch((MC_PreDefinedMakros)MC_Einteilungen.SelectedItem)
+            try
             {
-                case MC_PreDefinedMakros.Hunde:
-                    {
-                        Makro_Handler.EntryList.Clear();
-                        if (listHandler.TanksList.Count >= 5)
+                switch ((MC_PreDefinedMakros)MC_Einteilungen.SelectedItem)
+                {
+                    case MC_PreDefinedMakros.Hunde:
                         {
-                            makroText = "";
-                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 5);
+                            Makro_Handler.EntryList.Clear();
+                            if (listHandler.TanksList.Count >= 5)
+                            {
+                                makroText = "";
+                                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 5);
+                            }
+                            Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + " von 5 Tanks eingeteilt";
+                            break;
                         }
-                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + " von 5 Tanks eingeteilt";
-                        break;
-                    }
-                case MC_PreDefinedMakros.Sulfuron:
-                    {
-                        Makro_Handler.EntryList.Clear();
-                        if (listHandler.TanksList.Count >= 5 && listHandler.KickerList.Count >= 4)
+                    case MC_PreDefinedMakros.Sulfuron:
                         {
-                            makroText = "";
-                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Kicker, 4, true);
+                            Makro_Handler.EntryList.Clear();
+                            if (listHandler.TanksList.Count >= 5 && listHandler.KickerList.Count >= 4)
+                            {
+                                makroText = "";
+                                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Kicker, 4, true);
+                            }
+                            Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Kicker).Count() + "/4 Kicker.";
+                            break;
                         }
-                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Kicker).Count() + "/4 Kicker.";
-                        break;
-                    }
-                case MC_PreDefinedMakros.Majordomus:
-                    {
-                        Makro_Handler.EntryList.Clear();
-                        if (listHandler.TanksList.Count >= 5 && listHandler.MageList.Count >= 4)
+                    case MC_PreDefinedMakros.Majordomus:
                         {
-                            makroText = "";
-                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Mage, 4, true);
+                            Makro_Handler.EntryList.Clear();
+                            if (listHandler.TanksList.Count >= 5 && listHandler.MageList.Count >= 4)
+                            {
+                                makroText = "";
+                                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, 4, Role.Mage, 4, true);
+                            }
+                            Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Mage).Count() + "/4 Mages.";
+                            break;
                         }
-                        Statusleiste.Content = Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + "/4 Tanks eingeteilt, " + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Mage).Count() + "/4 Mages.";
-                        break;
-                    }
-                case MC_PreDefinedMakros.Garr:
-                    {
-                        Makro_Handler.EntryList.Clear();
-                        if ((listHandler.WarlockList.Count + listHandler.TanksList.Count) >= 8)
+                    case MC_PreDefinedMakros.Garr:
                         {
-                            makroText = "";
-                            makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, (byte)(8 - listHandler.WarlockList.Count), Role.Warlock, (byte)listHandler.WarlockList.Count,true);
+                            Makro_Handler.EntryList.Clear();
+                            if ((listHandler.WarlockList.Count + listHandler.TanksList.Count) >= 8)
+                            {
+                                makroText = "";
+                                makroText = Raid_Setup.Einteilung(listHandler, Role.Tank, (byte)(8 - listHandler.WarlockList.Count), Role.Warlock, (byte)listHandler.WarlockList.Count, true);
+                            }
+                            Statusleiste.Content = (Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Warlock).Count()) + "/8 Tanks/Hexer eingeteilt,";
+                            break;
                         }
-                        Statusleiste.Content = (Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Tank).Count() + Makro_Handler.EntryList.Where(Entry => Entry.Role == Role.Warlock).Count()) + "/8 Tanks/Hexer eingeteilt,";
-                        break;
-                    }
 
 
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler");
             }
         }
         private void Count_Role1_TextChanged(object sender, TextChangedEventArgs e)

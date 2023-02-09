@@ -10,6 +10,8 @@ namespace Raid_Tool.Classes_Roles
     {
         public string Name { get; set; }
 
+        public Dispeller() { }
+
         public Dispeller(string name)
         {
             Name = name;

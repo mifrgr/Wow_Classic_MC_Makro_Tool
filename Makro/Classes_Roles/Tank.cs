@@ -13,6 +13,8 @@ namespace Raid_Tool.Classes_Roles
         public bool IsMT { get; set; }
         public Role Role { get; set; }
 
+        public Tank() { }
+
         public Tank(string name,Role role)
         {
             Name = name;
