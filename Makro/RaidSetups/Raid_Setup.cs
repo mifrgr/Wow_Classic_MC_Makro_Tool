@@ -65,6 +65,9 @@ namespace Raid_Tool.RaidSetups
                 {
                     case Role.Tank:
                         {
+                            if (listhandler.TanksList.Count < amount+1)
+                                throw new Exception("Zu wenig Tanks in der Liste!");
+
                             if(listhandler.TanksList[i].IsMT || Makro_Handler.EntryList.Exists(entry => entry.Name == listhandler.TanksList[i].Name))
                             {
                                 Makro_Handler.EntryList.Add(new Entry(Role.Tank, (Symbol)i + startindex, listhandler.TanksList[i+1].Name));

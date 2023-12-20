@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Raid_Tool.Makro;
 using Raid_Tool.Classes_Roles;
+using System.ServiceModel.Channels;
 
 namespace Raid_Tool.Handler
 {
@@ -29,7 +31,7 @@ namespace Raid_Tool.Handler
                 {
                     case "Tank":
                         {
-                            TanksList.Add(new Tank(item.Name,Role.Tank));
+                            TanksList.Add(new Tank(item.Name,Role.Tank,TanksList.Count));
                             break;
                         }
                     case "Mage":
@@ -63,7 +65,7 @@ namespace Raid_Tool.Handler
                                 KickerList.Add(new Kicker(item.Name));
                             }
                             else
-                                TanksList.Add(new Tank(item.Name,Role.Warrior));
+                                TanksList.Add(new Tank(item.Name,Role.Warrior,TanksList.Count));
                             break;
                         }
                     case "Paladin":
@@ -79,6 +81,22 @@ namespace Raid_Tool.Handler
             TanksList = TanksList.OrderBy(Tank => Tank.Role).ToList();
         }
 
+        public void UpdateList(DataGrid Tanks)
+        {
+            foreach (var TankEntry in Tanks.ItemsSource) 
+            {
+                if(!TanksList.Contains((Tank)TankEntry))
+                {
+                    TanksList.Add((Tank)TankEntry);
+                }
+            }
+            TanksList.Sort((x,y) => { return x.Id.CompareTo(y.Id); } );
+        }
+
+        int SortByIDAscending(int ID1, int ID2)
+        {
+            return ID1.CompareTo(ID2);
+        }
         void ClearLists()
         {
             TanksList.Clear();

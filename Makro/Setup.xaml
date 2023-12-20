@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <Label Content="Tanks:   MainTank:" FontWeight="Black"></Label>
-            <DataGrid Name="Tanks" IsReadOnly="False"></DataGrid>
+            <DataGrid Name="Tanks" IsReadOnly="False" ></DataGrid>
             <Button Name="ResetTanks" Content="Reset" Width="50" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ResetTanks_Click" Margin="5"></Button>
         </StackPanel>
         <StackPanel Grid.Column="1">

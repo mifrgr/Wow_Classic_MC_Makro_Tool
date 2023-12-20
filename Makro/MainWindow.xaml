@@ -16,6 +16,7 @@
             <MenuItem Header="Tools">
                 <MenuItem Header="Buffs" Click="_20er_Click"></MenuItem>
                 <MenuItem Header="Setup" Click="MC_Click_1" ></MenuItem>
+                <MenuItem Header="Münzen" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <StackPanel>

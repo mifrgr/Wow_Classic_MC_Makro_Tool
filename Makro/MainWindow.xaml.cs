@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Raid_Tool;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,12 @@ namespace Makro
         {
             Setup raid = new Setup();
             raid.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CoinSets sets = new CoinSets();
+            sets.Show();
         }
     }
 }

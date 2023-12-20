@@ -151,6 +151,7 @@ namespace Makro
 
         private void SetPreDefinedMakro()
         {
+            listHandler.UpdateList(Tanks);
             try
             {
                 switch ((MC_PreDefinedMakros)MC_Einteilungen.SelectedItem)
